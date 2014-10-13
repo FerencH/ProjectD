@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+			
+			<h:form id="projectDetail" style="text-align:center;">
+  				<h:panelGrid columns="2" cellpadding="5" style="text-align:center">
+  				
+					<p:outputLabel value="Project Name:" for="project_name"/>
+					<p:inputText id="project_name" value="#{projectController.project.name}"/>
+
+					<p:outputLabel value="Active" for="project_active"/>
+					<p:selectBooleanCheckbox id="project_active" value="#{projectController.project.active}"/>
+					
+					<p:outputLabel value="Project Priority:" for="project_prio"/>
+					<p:inputText id="project_prio" value="#{projectController.project.priority}"/>
+					
+					<p:outputLabel value="Project Purpose:" for="project_purpose"/>
+					<p:inputTextarea id="project_purpose" value="#{projectController.project.purpose}"/>
+					
+					<p:outputLabel value="Exit By Date:" for="project_exit_type"/>
+					<p:selectBooleanCheckbox id="project_exit_type" value="#{projectController.project.exitTypeIsDate}"/>
+					
+					<p:outputLabel value="Exit Date:" for="project_exit_date"/>
+					<p:calendar id="project_exit_date" mode="popup" showOn="button" value="#{projectController.project.exitDate}"/>
+					
+					<p:outputLabel value="Exit Criteria:" for="project_exit_criteria"/>
+					<p:inputText id="project_exit_criteria" value="#{projectController.project.exitCriteria}"/>
+					
+					<p:outputLabel value="Exit Criteria Fulfilled:" for="project_exit_criteria_fulfilled"/>
+					<p:selectBooleanCheckbox id="project_exit_criteria_fulfilled" value="#{projectController.project.exitCriteriaFulfilled}"/>
+				
+				</h:panelGrid>
+				
+				<p:commandButton id="submitButton" value="Save" update=":projectList" actionListener="#{projectController.doSaveProject()}" oncomplete="PF('editProjectDialog').hide();"/>
+				<p:commandButton value="Cancel" type="button" onclick="PF('editProjectDialog').hide();"/>
+			</h:form>
+
+</html>

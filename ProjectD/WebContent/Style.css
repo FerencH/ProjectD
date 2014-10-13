@@ -1,0 +1,103 @@
+@CHARSET "ISO-8859-1";
+
+<style type="text/css" media="all">
+	
+	td.apa{
+		border: none;
+	}
+	
+	.apa tr, .apa td {
+    	border: none;
+    	width: 30%;
+	}
+	/*body{ 
+		
+	}	
+	
+	h1{
+		text-align: center;
+		font-family: "Candara";
+		color:grey;
+	}
+	h3{
+		font-family: "Candara";
+		color:grey;
+	}
+	
+	a{
+		font-family: "Candara";
+		color:grey;
+	}
+	
+	p{
+		font-family: "Candara";
+		color:grey;
+	}
+	
+	div.ProjectListContainer{
+		padding-left: 15%;
+		padding-right:15%;
+		padding-top: 1%;
+	}
+	div.ProjectList {
+
+		font-family: "Candara";
+		font-size: x-large;
+		color:grey;
+		text-align: center;
+		overflow:hidden;
+		
+
+		height:30px;
+		padding-top:2%;
+		padding-bottom:2%;
+		
+		background-color:lightblue;
+		
+		box-shadow: -10px 10px 10px grey;
+		border-top-left-radius:1em;
+		border-top-right-radius:1em;
+		border-bottom-left-radius:1em;
+		border-bottom-right-radius:1em;
+		border-color:white;
+		border-style:solid;
+		border-width:5px;	
+	}
+	div.ProjectList:HOVER{
+
+		height:auto;
+		background-color:aqua;
+	}
+	div.ProjectListInactive{
+
+		font-family: "Candara";
+		font-size: x-large;
+		color:grey;
+		text-align: center;
+		overflow:hidden;
+		
+
+		height:30px;
+		padding-top:2%;
+		padding-bottom:2%;
+		
+		background-color:lightgrey;
+		
+		box-shadow: -10px 10px 10px grey;
+		border-top-left-radius:1em;
+		border-top-right-radius:1em;
+		border-bottom-left-radius:1em;
+		border-bottom-right-radius:1em;
+		border-color:white;
+		border-style:solid;
+		border-width:5px;	
+	}
+	div.ProjectListInactive:HOVER{
+		/*
+		By setting the height to auto it will expand automatically when there is content to show that
+		*/
+
+
+
+	
+</style>

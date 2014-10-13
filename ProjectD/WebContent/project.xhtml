@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:composition template="layout.xhtml">
+	
+		<ui:define name="title" value="#{projectController.project.name}"/>	
+		
+		<ui:define name="content">
+			
+			<!--  <f:metadata>
+				<f:viewAction action="#{projectController.doOpenProject()}" />
+			</f:metadata>-->
+		
+			<h2>#{projectController.project.name}</h2>
+			
+			
+			
+			<p:dataTable var="date" value="#{projectController.allDates}" paginator="true" rows="10" lazy="true" widgetVar="datesTable">
+				
+				<f:facet name="header">
+					<p:outputPanel>  
+		                <h:outputText value="Search all fields:" />  
+		                <p:inputText id="globalFilter" onkeyup="PF('datesTable').filter()" style="width:150px" />  
+		            </p:outputPanel>
+				</f:facet>
+				
+				<p:column>
+					<f:facet name="header">
+                     Date
+               		</f:facet>
+                     #{date.date}
+				</p:column>
+				
+				<p:columns value="#{projectController.columns}" var="column" columnIndexVar="colIndex">  
+			    	<f:facet name="header">  
+			    		#{column.headerName}  
+			    	</f:facet>  
+			    	
+			    	<!-- Get the date.(column.property) -->
+			    	
+			    	<!-- Should add a test here to see if the table below is empty, if it is then dont create the table -->
+			    	<p:dataTable emptyMessage="" value="#{date.getThreadContent(column.propertyID)}" var="content">
+			    	
+			    		<p:column>
+				  			#{content.type}
+				  			
+
+				          <h:outputText value="#{content.activity.name}" rendered="#{content.type == 'activity' or content.type == 'todo'}" />
+				
+				          <h:outputText value="Neither activity or todo" rendered="#{content.type != 'activity' and content.type != 'todo'}" /> 
+				    		<!--  <c:choose>
+				    			<c:when test="#{content.type == 'activity'}">
+					    			#{content.activity.name}
+					    		</c:when>	
+					    		<c:when test="#{content.type == 'todo'}">
+					    			#{content.activity.name}
+					    		</c:when>
+				    			<c:otherwise>
+				    				Neither activity or todo
+				    			</c:otherwise>
+							</c:choose> -->
+					    			
+					    			<!--  <p:dataList emptyMessage="" value="#{content.activity.getDecisions()}" var="decision" itemType="disc">
+					    				 <f:facet name="header">
+								               Decisions
+								        </f:facet>
+				        				#{decision.name}
+				  					</p:dataList>
+				  					
+				  					<p:dataList emptyMessage="" value="#{content.activity.getTodos()}" var="todo" itemType="disc">
+				  						<f:facet name="header">
+				  							Todo
+				  						</f:facet>
+				  						#{todo.note} #{todo.due}
+				  					</p:dataList> -->
+
+			  					
+			    		</p:column>
+			    		
+			    	</p:dataTable>
+			    	
+			    	
+			    </p:columns>
+			</p:dataTable>
+	  		
+
+  		</ui:define>
+	</ui:composition>
+</html>

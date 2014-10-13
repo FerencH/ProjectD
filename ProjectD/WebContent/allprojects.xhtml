@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="layout.xhtml">
+	
+		<ui:define name="title">All Projects</ui:define>	
+		
+		<ui:define name="content">
+			
+			
+			<p:dataTable var="project" value="#{projectController.allProjects}" widgetVar="projectTable" filteredValue="#{projectController.filteredProjects}">
+				
+				<f:facet name="header">
+					<p:outputPanel>  
+		                <h:outputText value="Search all fields:" />  
+		                <p:inputText id="globalFilter" onkeyup="PF('projectTable').filter()" style="width:150px" />  
+		            </p:outputPanel>
+				</f:facet>
+				
+				<p:column headerText="Name" filterBy="#{project.name}">
+					<h:outputText value="#{project.name}" />
+				</p:column>
+				
+				<p:column headerText="Priority">
+					<h:outputText value="#{project.priority}" />
+				</p:column>
+				
+				<p:column headerText="Exit">
+					<h:outputText value="#{project.exitCriteria}" />
+				</p:column>
+				
+			</p:dataTable>		
+
+  		</ui:define>
+	</ui:composition>
+</html>
